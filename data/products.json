@@ -1,0 +1,14 @@
+[
+  {
+    "kode":"GL001",
+    "nama":"Sandal Casual Wanita",
+    "warna":"Hitam",
+    "gambar":"images/produk/contoh1.jpg"
+  },
+  {
+    "kode":"GL001",
+    "nama":"Sandal Casual Wanita",
+    "warna":"Cream",
+    "gambar":"images/produk/contoh2.jpg"
+  }
+]
