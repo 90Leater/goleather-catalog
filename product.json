@@ -3,14 +3,14 @@
     "id": 1,
     "nama": "Betmen 7cm",
     "kategori": "Sandal Wanita 7cm",
-    "Folder": "Betmen 7cm",
+    "folder": "Betmen 7cm",
     "warna": "hitam.jpg"
   },
   {
     "id": 2,
     "nama": "Adyora Jordan",
     "kategori": "Sandal Wanita Flat",
-    "Folder": "Adyora Jordan",
+    "folder": "adyora jordan",
     "warna": "hitam.jpg"
   }
 ]
