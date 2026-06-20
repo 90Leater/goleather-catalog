@@ -27,7 +27,7 @@ fetch('product.json')
 
                 <a
                     class="btn"
-                    href="https://wa.me/6281234567890?text=Saya ingin pesan ${product.nama}"
+                    href="https://wa.me/6288973623416?text=Saya ingin pesan ${product.nama}"
                     target="_blank"
                 >
                     Tanya Harga
