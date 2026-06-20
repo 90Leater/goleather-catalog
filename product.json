@@ -1,16 +1,64 @@
-[
-  {
-    "id": 1,
-    "nama": "Betmen 7cm",
-    "kategori": "Sandal Wanita 7cm",
-    "folder": "Betmen 7cm",
-    "warna": "hitam.jpg"
-  },
-  {
-    "id": 2,
-    "nama": "Adyora Jordan",
-    "kategori": "Sandal Wanita Flat",
-    "folder": "adyora jordan",
-    "warna": "hitam.jpg"
-  }
-]
+{
+  "id": 1,
+  "kode": "BETMEN",
+  "nama": "Betmen 7cm",
+  "kategori": "Sandal Wanita 7cm",
+  "folder": "Betmen 7cm",
+  "warna": [
+    "abu nude.jpg",
+    "abu tua.jpg",
+    "army.jpg",
+    "coklat.jpg",
+    "fuschia.jpg",
+    "green tea.jpg",
+    "hijau.jpg",
+    "hitam.jpg",
+    "kuning.jpg",
+    "lemon.jpg",
+    "maroon.jpg",
+    "merah.jpg",
+    "milo.jpg",
+    "mocca muda.jpg",
+    "mocca susu.jpg",
+    "mocca.jpg",
+    "navy.jpg",
+    "peach.jpg",
+    "pink baby.jpg",
+    "softblue.jpg",
+    "tan tua.jpg",
+    "tan.jpg",
+    "ungu.jpg"
+  ]
+},
+{
+  "id": 2,
+  "kode": "BLAZER",
+  "nama": "Blazer",
+  "kategori": "Sandal Wanita 5cm",
+  "folder": "Blazer 5cm-kyu",
+  "warna": [
+    "abu nude.jpg",
+    "abu tua.jpg",
+    "army.jpg",
+    "coklat.jpg",
+    "fuschia.jpg",
+    "green tea.jpg",
+    "hijau.jpg",
+    "hitam.jpg",
+    "kuning.jpg",
+    "lemon.jpg",
+    "maroon.jpg",
+    "merah.jpg",
+    "milo.jpg",
+    "mocca muda.jpg",
+    "mocca susu.jpg",
+    "mocca.jpg",
+    "navy.jpg",
+    "peach.jpg",
+    "pink baby.jpg",
+    "softblue.jpg",
+    "tan tua.jpg",
+    "tan.jpg",
+    "ungu.jpg"
+  ]
+}
