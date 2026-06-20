@@ -57,3 +57,34 @@ input,select{
     padding:10px;
     border-radius:8px;
 }
+.hero{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:80px 20px;
+}
+
+.hero h1{
+    font-size:48px;
+    margin:0;
+}
+
+.hero h2{
+    margin-top:15px;
+    color:#f5c542;
+}
+
+.hero p{
+    margin:20px 0;
+    font-size:18px;
+}
+
+.hero-btn{
+    display:inline-block;
+    background:#25D366;
+    color:white;
+    text-decoration:none;
+    padding:12px 25px;
+    border-radius:8px;
+    font-weight:bold;
+}
