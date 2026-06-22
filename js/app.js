@@ -580,7 +580,6 @@ document
     document
     .getElementById('showFavorites')
     .classList.remove('active');
-
     filterProducts();
 
 });
@@ -631,7 +630,7 @@ document
     .getElementById('showFavorites')
     .classList.remove('active');
     
-    renderRecentProducts();
+    // renderRecentProducts();
 
     renderProducts(products);
 
