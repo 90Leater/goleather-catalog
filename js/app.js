@@ -250,6 +250,39 @@ fetch('product.json')
         'input',
         filterProducts
     );
+    document
+    .getElementById('prevProduct')
+    .addEventListener('click', () => {
+
+    if(currentProductIndex > 0){
+
+        currentProductIndex--;
+
+        openProduct(
+            products[currentProductIndex],
+            currentProductIndex
+        );
+
+    }
+
+});
+
+document
+.getElementById('nextProduct')
+.addEventListener('click', () => {
+
+    if(currentProductIndex < products.length - 1){
+
+        currentProductIndex++;
+
+        openProduct(
+            products[currentProductIndex],
+            currentProductIndex
+        );
+
+    }
+
+});
 
     renderProducts(products);
 
