@@ -286,3 +286,28 @@ input,select{
     margin-top:5px;
     font-size:12px;
 }
+.floating-wa{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+
+    background:#25D366;
+    color:white;
+
+    text-decoration:none;
+
+    padding:14px 18px;
+
+    border-radius:50px;
+
+    font-weight:bold;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.2);
+
+    z-index:999;
+}
+
+.floating-wa:hover{
+    transform:translateY(-3px);
+    transition:.3s;
+}
