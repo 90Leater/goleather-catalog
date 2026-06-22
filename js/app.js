@@ -13,27 +13,83 @@ fetch('product.json')
 
     function openProduct(product,index){
 
-        currentProductIndex = index;
+    currentProductIndex = index;
 
-        const imagePath =
-        `Images/${product.folder}/${product.thumbnail}`;
+    const imagePath =
+    `Images/${product.folder}/${product.thumbnail}`;
 
-        document.getElementById('modalImage').src =
-        imagePath;
+    document.getElementById('modalImage').src =
+    imagePath;
 
-        document.getElementById('modalName').textContent =
-        product.nama;
+    document.getElementById('modalName').textContent =
+    product.nama;
 
-        document.getElementById('modalCode').textContent =
-        'Kode: ' + product.kode;
+    document.getElementById('modalCode').textContent =
+    'Kode: ' + product.kode;
 
-        document.getElementById('modalCategory').textContent =
-        product.kategori;
+    document.getElementById('modalCategory').textContent =
+    product.kategori;
 
-        document.getElementById('productModal').style.display =
-        'block';
+    document.getElementById('modalWhatsapp').href =
+    `https://wa.me/6288973623416?text=Saya ingin pesan ${product.nama}`;
+
+    const gallery =
+    document.getElementById('galleryThumbs');
+
+    gallery.innerHTML = '';
+
+    if(product.warna){
+
+        Object.entries(product.warna)
+        .forEach(([namaWarna,file]) => {
+
+            const btn =
+            document.createElement('button');
+
+            btn.className =
+            'color-btn';
+
+            btn.textContent =
+            namaWarna;
+
+            btn.addEventListener('click', () => {
+
+                document.getElementById('modalImage').src =
+                `Images/${product.folder}/${file}`;
+
+                document
+                .querySelectorAll('.color-btn')
+                .forEach(b =>
+                    b.classList.remove('active')
+                );
+
+                btn.classList.add('active');
+
+            });
+
+            gallery.appendChild(btn);
+
+        });
+
+        const firstBtn =
+        gallery.querySelector('.color-btn');
+
+        if(firstBtn){
+            firstBtn.classList.add('active');
+        }
 
     }
+
+    document.getElementById('prevProduct').disabled =
+    (index === 0);
+
+    document.getElementById('nextProduct').disabled =
+    (index === products.length - 1);
+
+    document.getElementById('productModal').style.display =
+    'block';
+
+}
 
     function renderProducts(filteredProducts){
 
@@ -73,70 +129,12 @@ fetch('product.json')
 
             card.addEventListener('click', () => {
 
-                document.getElementById('modalImage').src =
-                imagePath;
+    const realIndex =
+    products.findIndex(
+        p => p.id === product.id
+    );
 
-                document.getElementById('modalName').textContent =
-                product.nama;
-
-                document.getElementById('modalCode').textContent =
-                "Kode: " + product.kode;
-
-                document.getElementById('modalCategory').textContent =
-                product.kategori;
-
-                document.getElementById('modalWhatsapp').href =
-                `https://wa.me/6288973623416?text=Saya ingin pesan ${product.nama}`;
-
-                const gallery =
-                document.getElementById('galleryThumbs');
-
-                gallery.innerHTML = '';
-
-                if(product.warna){
-
-                    Object.entries(product.warna)
-                    .forEach(([namaWarna,file]) => {
-
-                        const btn =
-                        document.createElement('button');
-
-                        btn.className =
-                        'color-btn';
-
-                        btn.textContent =
-                        namaWarna;
-
-                        btn.addEventListener('click', () => {
-
-                            document.getElementById('modalImage').src =
-                            `Images/${product.folder}/${file}`;
-
-                            document
-                            .querySelectorAll('.color-btn')
-                            .forEach(b =>
-                                b.classList.remove('active')
-                            );
-
-                            btn.classList.add('active');
-
-                        });
-
-                        gallery.appendChild(btn);
-
-                    });
-
-                    const firstBtn =
-                    gallery.querySelector('.color-btn');
-
-                    if(firstBtn){
-                        firstBtn.classList.add('active');
-                    }
-
-                }
-
-                document.getElementById('productModal').style.display =
-                'block';
+    openProduct(product, realIndex);
 
             });
 
@@ -170,6 +168,40 @@ fetch('product.json')
             btn.addEventListener('click', () => {
 
                 currentPage = i;
+
+                document
+.getElementById('prevProduct')
+.addEventListener('click', () => {
+
+    if(currentProductIndex > 0){
+
+        currentProductIndex--;
+
+        openProduct(
+            products[currentProductIndex],
+            currentProductIndex
+        );
+
+    }
+
+});
+
+            document
+            .getElementById('nextProduct')
+            .addEventListener('click', () => {
+
+            if(currentProductIndex < products.length - 1){
+
+            currentProductIndex++;
+
+            openProduct(
+            products[currentProductIndex],
+            currentProductIndex
+        );
+
+    }
+
+});
 
                 renderProducts(filteredProducts);
 
