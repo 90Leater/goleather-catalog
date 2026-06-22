@@ -7,7 +7,33 @@ fetch('product.json')
     const pagination = document.getElementById('pagination');
 
     let currentPage = 1;
+    let currentProductIndex = 0;
+
     const productsPerPage = 10;
+
+    function openProduct(product,index){
+
+        currentProductIndex = index;
+
+        const imagePath =
+        `Images/${product.folder}/${product.thumbnail}`;
+
+        document.getElementById('modalImage').src =
+        imagePath;
+
+        document.getElementById('modalName').textContent =
+        product.nama;
+
+        document.getElementById('modalCode').textContent =
+        'Kode: ' + product.kode;
+
+        document.getElementById('modalCategory').textContent =
+        product.kategori;
+
+        document.getElementById('productModal').style.display =
+        'block';
+
+    }
 
     function renderProducts(filteredProducts){
 
