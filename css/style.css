@@ -263,14 +263,19 @@ input,select{
 }
 
 .related-item{
-    background:#f3f3f3;
-    padding:8px 12px;
-    border-radius:8px;
+    width:90px;
     cursor:pointer;
-    font-size:14px;
+    text-align:center;
 }
 
-.related-item:hover{
-    background:#25D366;
-    color:white;
+.related-item img:hover{
+    transform:scale(1.05);
+    transition:.3s;
+    border-color:#25D366;
+}
+
+.related-item span{
+    display:block;
+    margin-top:5px;
+    font-size:12px;
 }
