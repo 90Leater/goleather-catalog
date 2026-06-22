@@ -9,6 +9,8 @@ fetch('product.json')
     function renderProducts(filteredProducts) {
 
         container.innerHTML = '';
+        document.getElementById('productCount').textContent =
+        `Menampilkan ${filteredProducts.length} Produk`;
 
         filteredProducts.forEach(product => {
 
