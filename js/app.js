@@ -198,7 +198,22 @@ relatedProducts.forEach(item => {
     'block';
 
 }
+    function getFavorites(){
 
+        return JSON.parse(
+            localStorage.getItem('favorites')
+        ) || [];
+
+    }
+
+    function saveFavorites(favorites){
+
+        localStorage.setItem(
+            'favorites',
+            JSON.stringify(favorites)
+        );
+
+    }
     function renderProducts(filteredProducts){
 
         container.innerHTML = '';
@@ -254,7 +269,68 @@ relatedProducts.forEach(item => {
     openProduct(product, realIndex);
 
             });
+            const favBtn =
+card.querySelector('.favorite-btn');
 
+let favorites =
+getFavorites();
+
+if(
+favorites.includes(product.id)
+){
+
+    favBtn.classList.add('active');
+
+    favBtn.textContent =
+    '❤️ Favorit';
+
+}
+
+favBtn.addEventListener(
+'click',
+(e) => {
+
+    e.stopPropagation();
+
+    let favorites =
+    getFavorites();
+
+    if(
+    favorites.includes(product.id)
+    ){
+
+        favorites =
+        favorites.filter(
+            id => id !== product.id
+        );
+
+        favBtn.classList.remove(
+        'active'
+        );
+
+        favBtn.textContent =
+        '♡ Favorit';
+
+    }else{
+
+        favorites.push(
+        product.id
+        );
+
+        favBtn.classList.add(
+        'active'
+        );
+
+        favBtn.textContent =
+        '❤️ Favorit';
+
+    }
+
+    saveFavorites(
+    favorites
+    );
+
+});
             container.appendChild(card);
 
         });
