@@ -2,105 +2,98 @@ fetch('product.json')
 .then(res => res.json())
 .then(products => {
 
-    console.log("Jumlah produk:", products.length);
-
     const container = document.getElementById('products');
+    const searchInput = document.getElementById('search');
 
-```
-const container = document.getElementById('products');
-const searchInput = document.getElementById('search');
+    function renderProducts(filteredProducts) {
 
-function renderProducts(filteredProducts){
+        container.innerHTML = '';
 
-    container.innerHTML = '';
+        filteredProducts.forEach(product => {
 
-    filteredProducts.forEach(product => {
+            const imagePath =
+            `Images/${product.folder}/${product.thumbnail}`;
 
-        const imagePath =
-        `Images/${product.folder}/${product.thumbnail}`;
+            const card = document.createElement('div');
+            card.className = 'card';
 
-        const card = document.createElement('div');
+            card.innerHTML = `
+                <img src="${imagePath}" alt="${product.nama}">
+                <div class="card-body">
 
-        card.className = 'card';
+                    <h3>${product.nama}</h3>
 
-        card.innerHTML = `
-            <img src="${imagePath}" alt="${product.nama}">
-            <div class="card-body">
+                    <p><b>Kode:</b> ${product.kode}</p>
 
-                <h3>${product.nama}</h3>
+                    <p>${product.kategori}</p>
 
-                <p><b>Kode:</b> ${product.kode}</p>
+                    <a class="btn"
+                       href="https://wa.me/6288973623416?text=Saya ingin pesan ${product.nama}"
+                       target="_blank">
+                       Tanya Harga
+                    </a>
 
-                <p>${product.kategori}</p>
+                </div>
+            `;
 
-                <a class="btn">
-                    Tanya Harga
-                </a>
+            card.addEventListener('click', () => {
 
-            </div>
-        `;
+                document.getElementById('modalImage').src =
+                imagePath;
 
-        card.addEventListener('click', () => {
+                document.getElementById('modalName').textContent =
+                product.nama;
 
-            document.getElementById('modalImage').src =
-            imagePath;
+                document.getElementById('modalCode').textContent =
+                'Kode: ' + product.kode;
 
-            document.getElementById('modalName').textContent =
-            product.nama;
+                document.getElementById('modalCategory').textContent =
+                product.kategori;
 
-            document.getElementById('modalCode').textContent =
-            "Kode: " + product.kode;
+                document.getElementById('modalWhatsapp').href =
+                `https://wa.me/6288973623416?text=Saya ingin pesan ${product.nama}`;
 
-            document.getElementById('modalCategory').textContent =
-            product.kategori;
+                document.getElementById('productModal').style.display =
+                'block';
 
-            document.getElementById('modalWhatsapp').href =
-            `https://wa.me/6288973623416?text=Saya ingin pesan ${product.nama}`;
+            });
 
-            document.getElementById('productModal').style.display =
-            'block';
+            container.appendChild(card);
 
         });
 
-        container.appendChild(card);
+    }
+
+    renderProducts(products);
+
+    searchInput.addEventListener('input', () => {
+
+        const keyword = searchInput.value.toLowerCase();
+
+        const filtered = products.filter(product => {
+
+            const nama = String(product.nama || '').toLowerCase();
+            const kode = String(product.kode || '').toLowerCase();
+
+            return nama.includes(keyword) ||
+                   kode.includes(keyword);
+
+        });
+
+        renderProducts(filtered);
 
     });
 
-}
-
-renderProducts(products);
-
-searchInput.addEventListener('input', () => {
-    console.log(searchInput.value);
-
-    const keyword =
-    searchInput.value.toLowerCase();
-    console.log("Cari:", keyword);
-
-    const filtered = products.filter(product => {
-
-    const nama = String(product.nama || '').toLowerCase();
-    const kode = String(product.kode || '').toLowerCase();
-
-    return nama.includes(keyword) ||
-           kode.includes(keyword);
-
-});
-    console.log("Hasil:", filtered.length);
-    renderProducts(filtered);
-
-});
-```
-
+})
+.catch(error => {
+    console.error('Error:', error);
 });
 
 document.addEventListener('click', function(e){
 
-```
-if(e.target.classList.contains('close')){
-    document.getElementById('productModal').style.display =
-    'none';
-}
-```
+    if(e.target.classList.contains('close')){
+        document.getElementById('productModal').style.display =
+        'none';
+    }
 
 });
