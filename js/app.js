@@ -82,9 +82,6 @@ fetch('product.json')
     related.className =
     'related-item';
 
-    related.textContent =
-    item.nama;
-
     relatedProducts.forEach(item => {
 
     const related =
