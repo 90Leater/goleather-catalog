@@ -7,6 +7,7 @@ fetch('product.json')
     const pagination = document.getElementById('pagination');
     const productCount = document.getElementById('productCount');
     const kategoriFilter = document.getElementById('kategoriFilter');
+    const sortFilter = document.getElementById('sortFilter');
 
     let currentPage = 1;
     let currentView = 'all';
@@ -442,6 +443,21 @@ favBtn.addEventListener(
     });
 
     currentPage = 1;
+    if(sortFilter.value === 'az'){
+
+    filtered.sort((a,b) =>
+        a.nama.localeCompare(b.nama)
+    );
+
+}
+
+if(sortFilter.value === 'za'){
+
+    filtered.sort((a,b) =>
+        b.nama.localeCompare(a.nama)
+    );
+
+}
 
     renderProducts(filtered);
 
@@ -457,6 +473,10 @@ favBtn.addEventListener(
     'change',
     filterProducts
     );
+    sortFilter.addEventListener(
+    'change',
+    filterProducts
+);
     document
     .getElementById('prevProduct')
     .addEventListener('click', () => {
