@@ -38,8 +38,33 @@ fetch('product.json')
 
             card.addEventListener('click', () => {
 
-                document.getElementById('modalImage').src =
-                imagePath;
+                const gallery =
+                document.getElementById('galleryThumbs');
+
+                gallery.innerHTML = '';
+
+                if(product.warna){
+
+                    product.warna.forEach(file => {
+
+                        const thumb =
+                        document.createElement('img');
+
+                        thumb.src =
+                        `Images/${product.folder}/${file}`;
+
+                        thumb.addEventListener('click', () => {
+
+                            document.getElementById('modalImage').src =
+                            `Images/${product.folder}/${file}`;
+
+                });
+
+                gallery.appendChild(thumb);
+
+            });
+
+    }
 
                 document.getElementById('modalName').textContent =
                 product.nama;
