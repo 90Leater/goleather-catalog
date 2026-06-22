@@ -60,12 +60,12 @@ fetch('product.json')
 
 }
 
-    function openProduct(product,index){
-    saveRecent(product.id);
-        function renderRecentProducts(){
+    function renderRecentProducts(){
 
     const container =
     document.getElementById('recentProducts');
+
+    if(!container) return;
 
     container.innerHTML = '';
 
@@ -78,7 +78,7 @@ fetch('product.json')
 
         const product =
         products.find(
-            p => p.id === id
+            p => String(p.id) === String(id)
         );
 
         if(!product) return;
@@ -113,7 +113,13 @@ fetch('product.json')
     });
 
 }
+
+function openProduct(product,index){
+
+    saveRecent(product.id);
+
     renderRecentProducts();
+
     currentProductIndex = index;
 
     const imagePath =
@@ -630,7 +636,7 @@ document
     .getElementById('showFavorites')
     .classList.remove('active');
     
-    // renderRecentProducts();
+    renderRecentProducts();
 
     renderProducts(products);
 
