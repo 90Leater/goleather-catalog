@@ -4,6 +4,7 @@ fetch('product.json')
 
     const container = document.getElementById('products');
     const searchInput = document.getElementById('search');
+    const kategoriFilter = document.getElementById('kategoriFilter');
 
     function renderProducts(filteredProducts) {
 
@@ -95,30 +96,42 @@ fetch('product.json')
 
     renderProducts(products);
 
-    searchInput.addEventListener('input', () => {
+    function filterProducts(){
 
-        const keyword = searchInput.value.toLowerCase();
+    const keyword =
+    searchInput.value.toLowerCase();
 
-        const filtered = products.filter(product => {
+    const kategori =
+    kategoriFilter.value;
 
-            const nama = String(product.nama || '').toLowerCase();
-            const kode = String(product.kode || '').toLowerCase();
+    const filtered = products.filter(product => {
 
-            return nama.includes(keyword) ||
-                   kode.includes(keyword);
+        const cocokKeyword =
+            product.nama.toLowerCase().includes(keyword) ||
+            product.kode.toLowerCase().includes(keyword);
 
-        });
+        const cocokKategori =
+            kategori === '' ||
+            product.kategori === kategori;
 
-        renderProducts(filtered);
+        return cocokKeyword && cocokKategori;
 
     });
 
-})
-.catch(error => {
-    console.error('Error:', error);
-});
+    renderProducts(filtered);
 
-document.addEventListener('click', function(e){
+}
+
+    searchInput.addEventListener('input', filterProducts);
+
+    kategoriFilter.addEventListener('change', filterProducts);
+
+    })
+    .catch(error => {
+    console.error('Error:', error);
+    });
+
+    document.addEventListener('click', function(e){
 
     if(e.target.classList.contains('close')){
         document.getElementById('productModal').style.display =
