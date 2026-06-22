@@ -70,6 +70,9 @@ fetch('product.json')
                     });
 
                     gallery.appendChild(btn);
+                    if(gallery.children.length === 1){
+                        btn.classList.add('active');
+                    }
 
                 });
 
