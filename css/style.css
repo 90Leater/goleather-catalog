@@ -337,3 +337,54 @@ input,select{
 #backToTop:hover{
     background:#25D366;
 }
+.footer{
+
+    background:#111;
+
+    color:white;
+
+    text-align:center;
+
+    padding:40px 20px;
+
+    margin-top:40px;
+
+}
+
+.footer h3{
+
+    margin:0;
+
+    font-size:28px;
+
+}
+
+.footer-links{
+
+    margin:20px 0;
+
+}
+
+.footer-links a{
+
+    color:white;
+
+    text-decoration:none;
+
+    margin:0 10px;
+
+}
+
+.footer-links a:hover{
+
+    color:#25D366;
+
+}
+
+.copyright{
+
+    color:#aaa;
+
+    font-size:14px;
+
+}
