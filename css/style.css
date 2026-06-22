@@ -234,3 +234,24 @@ input,select{
     background:#25D366;
     color:white;
 }
+.modal-nav{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin:15px 0;
+}
+
+.modal-nav button{
+    flex:1;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    background:#25D366;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.modal-nav button:hover{
+    opacity:.9;
+}
