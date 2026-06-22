@@ -28,7 +28,7 @@ fetch('product.json')
                     <p>${product.kategori}</p>
 
                     <a class="btn"
-                       href="https://wa.me/6288973623416?text=Saya ingin pesan ${product.nama}"
+                       href="https://wa.me/6288973623416?text=Saya ingin tanya harga ${product.nama}"
                        target="_blank">
                        Tanya Harga
                     </a>
@@ -76,7 +76,11 @@ fetch('product.json')
                 product.kategori;
 
                 document.getElementById('modalWhatsapp').href =
-                `https://wa.me/6288973623416?text=Saya ingin pesan ${product.nama}`;
+                `https://wa.me/6288973623416?text=Halo, saya ingin tanya harga:
+
+                Produk : ${product.nama}
+                Kode : ${product.kode}
+                Kategori : ${product.kategori}`;
 
                 document.getElementById('productModal').style.display =
                 'block';
