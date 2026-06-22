@@ -255,3 +255,22 @@ input,select{
 .modal-nav button:hover{
     opacity:.9;
 }
+.related-products{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:10px 0 20px;
+}
+
+.related-item{
+    background:#f3f3f3;
+    padding:8px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.related-item:hover{
+    background:#25D366;
+    color:white;
+}
