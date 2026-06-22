@@ -49,8 +49,10 @@ fetch('product.json')
             btn.className =
             'color-btn';
 
-            btn.textContent =
-            namaWarna;
+            btn.textContent = namaWarna;
+            if(file === product.thumbnail){
+            btn.classList.add('active');
+            }
 
             btn.addEventListener('click', () => {
 
@@ -70,13 +72,6 @@ fetch('product.json')
             gallery.appendChild(btn);
 
         });
-
-        const firstBtn =
-        gallery.querySelector('.color-btn');
-
-        if(firstBtn){
-            firstBtn.classList.add('active');
-        }
 
     }
 
