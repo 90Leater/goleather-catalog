@@ -64,10 +64,11 @@ input,select{
     border-radius:8px;
 }
 .hero{
+    position:relative;
     background:#111;
     color:white;
     text-align:center;
-    padding:40px 20px;
+    padding:80px 20px;
 }
 
 .hero h1{
