@@ -698,19 +698,23 @@ body.dark .product-tabs button.active{
 }
 .theme-footer{
 
-    margin-top:20px;
+    display:block;
 
-    padding:12px 24px;
+    margin:20px auto 10px;
+
+    padding:10px 20px;
 
     border:none;
 
-    border-radius:25px;
+    border-radius:20px;
 
     background:#25D366;
 
     color:white;
 
     font-weight:bold;
+
+    cursor:pointer;
 
 }
 body.dark .theme-footer{
