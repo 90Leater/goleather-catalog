@@ -317,9 +317,11 @@ input,select{
 
     position:fixed;
 
-    right:35px;
+    left:50%;
 
-    bottom:120px;
+    transform:translateX(-50%);
+
+    bottom:15px;
 
     background:none;
 
@@ -327,13 +329,15 @@ input,select{
 
     color:#25D366;
 
-    font-size:24px;
+    font-size:28px;
+
+    font-weight:bold;
 
     cursor:pointer;
 
     display:none;
 
-    z-index:999;
+    z-index:998;
 
 }
 
