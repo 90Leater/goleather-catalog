@@ -9,6 +9,10 @@ fetch('product.json')
     const kategoriFilter = document.getElementById('kategoriFilter');
     const sortFilter = document.getElementById('sortFilter');
 
+    let selectedProducts =
+    JSON.parse(
+    localStorage.getItem('selectedProducts')
+    ) || [];
     let currentPage = 1;
     let currentView = 'all';
     let currentProductIndex = 0;
@@ -315,6 +319,20 @@ ${window.location.href}`;
         );
 
     }
+    function updateCart(){
+
+    document.getElementById(
+    'cartCount'
+    ).textContent =
+
+    `🛒 ${selectedProducts.length} Produk Dipilih`;
+
+    localStorage.setItem(
+        'selectedProducts',
+        JSON.stringify(selectedProducts)
+    );
+
+}
     function saveRecent(productId){
 
     let recent =
