@@ -1,96 +1,84 @@
 function saveRecent(productId){
 
-```
-let recent =
-JSON.parse(
-    localStorage.getItem(
-        'recentProducts'
-    )
-) || [];
+    let recent =
+    JSON.parse(
+        localStorage.getItem('recentProducts')
+    ) || [];
 
-recent =
-recent.filter(
-    id => id !== productId
-);
+    recent =
+    recent.filter(
+        id => id !== productId
+    );
 
-recent.unshift(productId);
+    recent.unshift(productId);
 
-recent = recent.slice(0,8);
+    recent = recent.slice(0,8);
 
-localStorage.setItem(
-    'recentProducts',
-    JSON.stringify(recent)
-);
-```
+    localStorage.setItem(
+        'recentProducts',
+        JSON.stringify(recent)
+    );
 
 }
 
 function renderRecentProducts(){
 
-```
-const container =
-document.getElementById(
-    'recentProducts'
-);
+    const container =
+    document.getElementById('recentProducts');
 
-if(!container) return;
+    if(!container) return;
 
-container.innerHTML = '';
+    container.innerHTML = '';
 
-const recent =
-JSON.parse(
-    localStorage.getItem(
-        'recentProducts'
-    )
-) || [];
+    const recent =
+    JSON.parse(
+        localStorage.getItem('recentProducts')
+    ) || [];
 
-recent.forEach(id => {
+    recent.forEach(id => {
 
-    const product =
-    products.find(
-        p => String(p.id) === String(id)
-    );
+        const product =
+        products.find(
+            p => String(p.id) === String(id)
+        );
 
-    if(!product) return;
+        if(!product) return;
 
-    const card =
-    document.createElement('div');
+        const card =
+        document.createElement('div');
 
-    card.className =
-    'recent-card';
+        card.className =
+        'recent-card';
 
-    card.innerHTML =
-        '<img src="Images/' +
-        product.folder +
-        '/' +
-        product.thumbnail +
-        '" loading="lazy">' +
+        card.innerHTML = `
+            <img
+            src="Images/${product.folder}/${product.thumbnail}"
+            loading="lazy">
 
-        '<p>' +
-        product.nama +
-        '</p>' +
+            <p>${product.nama}</p>
 
-        '<label class="select-product">' +
+            <label class="select-product">
 
-        '<input type="checkbox" ' +
-        'class="product-checkbox" ' +
-        'data-id="' +
-        product.id +
-        '" ' +
+                <input
+                type="checkbox"
+                class="product-checkbox"
+                data-id="${product.id}"
+                ${selectedProducts.includes(product.id)
+                ? 'checked'
+                : ''}>
 
-        (selectedProducts.includes(product.id)
-        ? 'checked'
-        : '') +
+                <span>Pilih Produk</span>
 
-        '>' +
+            </label>
+        `;
 
-        '<span>Pilih Produk</span>' +
+        card.addEventListener('click', (e) => {
 
-    '</label>';
-
-    card.addEventListener(
-        'click',
-        () => {
+            if(
+                e.target.closest('.select-product')
+            ){
+                return;
+            }
 
             const index =
             products.findIndex(
@@ -102,74 +90,59 @@ recent.forEach(id => {
                 index
             );
 
-        }
-    );
+        });
 
-    container.appendChild(card);
+        container.appendChild(card);
 
-    const checkbox =
-    card.querySelector(
-        '.product-checkbox'
-    );
+        const checkbox =
+        card.querySelector(
+            '.product-checkbox'
+        );
 
-    const selectLabel =
-    card.querySelector(
-        '.select-product'
-    );
+        checkbox.addEventListener(
+            'click',
+            (e) => {
 
-    checkbox.addEventListener(
-        'click',
-        (e) => {
+                e.stopPropagation();
 
-            e.stopPropagation();
+            }
+        );
 
-        }
-    );
-
-    selectLabel.addEventListener(
-        'click',
-        (e) => {
-
-            e.stopPropagation();
-
-        }
-    );
-
-    checkbox.addEventListener(
-        'change',
-        () => {
-
-            if(
-            checkbox.checked
-            ){
+        checkbox.addEventListener(
+            'change',
+            () => {
 
                 if(
-                !selectedProducts.includes(
-                product.id
-                )
+                    checkbox.checked
                 ){
 
-                    selectedProducts.push(
-                        product.id
+                    if(
+                    !selectedProducts.includes(
+                    product.id
+                    )
+                    ){
+
+                        selectedProducts.push(
+                            product.id
+                        );
+
+                    }
+
+                }else{
+
+                    selectedProducts =
+                    selectedProducts.filter(
+                        id =>
+                        id !== product.id
                     );
 
                 }
 
-            }else{
-
-                selectedProducts =
-                selectedProducts.filter(
-                    id => id !== product.id
-                );
+                updateCart();
 
             }
+        );
 
-            updateCart();
-
-        }
-    );
-
-});
-```
+    });
 
 }
