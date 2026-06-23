@@ -861,15 +861,16 @@ body.dark .theme-footer{
 }
 .cart-bar{
     display:flex;
-    justify-content:space-between;
+    flex-direction:column;
     align-items:center;
 
-    gap:15px;
+    gap:12px;
 
     background:#fff;
-    padding:15px 20px;
 
-    border-radius:16px;
+    padding:18px 20px;
+
+    border-radius:18px;
 
     box-shadow:
     0 5px 20px rgba(0,0,0,.08);
@@ -888,7 +889,7 @@ body.dark .theme-footer{
 
     border:none;
 
-    padding:12px 22px;
+    padding:12px 24px;
 
     border-radius:30px;
 
@@ -896,7 +897,6 @@ body.dark .theme-footer{
 
     cursor:pointer;
 
-    transition:.3s;
 }
 
 #cartWhatsapp:hover{
