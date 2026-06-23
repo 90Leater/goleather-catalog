@@ -1,5 +1,20 @@
-const themeToggle
+const themeToggle =
+document.getElementById(
+'themeToggle'
+);
 
-savedTheme
+const savedTheme =
+localStorage.getItem(
+'theme'
+);
 
-localStorage theme
+if(savedTheme === 'dark'){
+
+    document.body.classList.add(
+    'dark'
+    );
+
+    themeToggle.textContent =
+    '☀️ Light Mode';
+
+}
