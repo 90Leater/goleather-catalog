@@ -13,18 +13,13 @@ recent.filter(
     id => id !== productId
 );
 
-recent.unshift(
-    productId
-);
+recent.unshift(productId);
 
-recent =
-recent.slice(0,8);
+recent = recent.slice(0,8);
 
 localStorage.setItem(
     'recentProducts',
-    JSON.stringify(
-        recent
-    )
+    JSON.stringify(recent)
 );
 ```
 
@@ -53,17 +48,13 @@ recent.forEach(id => {
 
     const product =
     products.find(
-        p =>
-        String(p.id) ===
-        String(id)
+        p => String(p.id) === String(id)
     );
 
     if(!product) return;
 
     const card =
-    document.createElement(
-        'div'
-    );
+    document.createElement('div');
 
     card.className =
     'recent-card';
@@ -81,7 +72,6 @@ recent.forEach(id => {
             type="checkbox"
             class="product-checkbox"
             data-id="${product.id}"
-
             ${selectedProducts.includes(product.id)
             ? 'checked'
             : ''}>
@@ -99,9 +89,7 @@ recent.forEach(id => {
 
             const index =
             products.findIndex(
-                p =>
-                p.id ===
-                product.id
+                p => p.id === product.id
             );
 
             openProduct(
@@ -112,9 +100,7 @@ recent.forEach(id => {
         }
     );
 
-    container.appendChild(
-        card
-    );
+    container.appendChild(card);
 
     const checkbox =
     card.querySelector(
@@ -168,8 +154,7 @@ recent.forEach(id => {
 
                 selectedProducts =
                 selectedProducts.filter(
-                    id =>
-                    id !== product.id
+                    id => id !== product.id
                 );
 
             }
