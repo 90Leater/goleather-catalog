@@ -127,8 +127,9 @@ fetch('product.json')
         });
 
         container.appendChild(card);
-        const checkbox = card.querySelector('.product-checkbox');
-        );
+
+const checkbox =
+card.querySelector('.product-checkbox');
 
 checkbox.addEventListener(
 'change',
@@ -142,7 +143,7 @@ checkbox.addEventListener(
         )
         ){
             selectedProducts.push(
-            product.id
+                product.id
             );
         }
 
@@ -150,7 +151,7 @@ checkbox.addEventListener(
 
         selectedProducts =
         selectedProducts.filter(
-        id => id !== product.id
+            id => id !== product.id
         );
 
     }
@@ -159,7 +160,7 @@ checkbox.addEventListener(
 
 });
 
-    });
+});
 
 }
 
