@@ -859,3 +859,46 @@ body.dark .theme-footer{
     accent-color:#25D366;
 
 }
+.cart-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:15px;
+
+    background:#fff;
+    padding:15px 20px;
+
+    border-radius:16px;
+
+    box-shadow:
+    0 5px 20px rgba(0,0,0,.08);
+
+    margin:20px 0;
+}
+
+#cartCount{
+    font-weight:700;
+    font-size:16px;
+}
+
+#cartWhatsapp{
+    background:#25D366;
+    color:#fff;
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:30px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+#cartWhatsapp:hover{
+    transform:translateY(-2px);
+}
