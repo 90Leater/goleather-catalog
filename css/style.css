@@ -314,22 +314,29 @@ input,select{
     transition:.3s;
 }
 #backToTop{
+
     position:fixed;
-    right:20px;
-    bottom:40px;
+
+    right:40px;
+
+    bottom:100px;
 
     background:none;
+
     border:none;
 
     color:#25D366;
 
-    font-size:48px;
+    font-size:28px;
+
+    font-weight:bold;
 
     cursor:pointer;
 
     display:none;
 
     z-index:999;
+
 }
 
 #backToTop:hover{
