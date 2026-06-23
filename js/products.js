@@ -187,6 +187,18 @@ function renderProducts(filteredProducts){
         card.querySelector(
             '.product-checkbox'
         );
+        const selectLabel =
+        card.querySelector(
+        '.select-product'
+        );
+
+        selectLabel.addEventListener(
+        'click',
+        (e) => {
+
+        e.stopPropagation();
+
+});
 
         checkbox.addEventListener(
         'click',
