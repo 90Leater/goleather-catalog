@@ -317,9 +317,9 @@ input,select{
 
     position:fixed;
 
-    right:40px;
+    right:35px;
 
-    bottom:100px;
+    bottom:120px;
 
     background:none;
 
@@ -327,9 +327,7 @@ input,select{
 
     color:#25D366;
 
-    font-size:28px;
-
-    font-weight:bold;
+    font-size:24px;
 
     cursor:pointer;
 
