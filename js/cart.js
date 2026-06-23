@@ -1,0 +1,3 @@
+let selectedProducts = [];
+
+function updateCart(){}
