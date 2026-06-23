@@ -382,6 +382,52 @@ input,select{
     color:#25D366;
 
 }
+.footer-desc{
+
+    max-width:500px;
+
+    margin:10px auto 25px;
+
+    color:#ccc;
+
+}
+
+.footer-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
+    gap:20px;
+
+    max-width:800px;
+
+    margin:0 auto 25px;
+
+}
+
+.footer-grid h4{
+
+    margin-bottom:10px;
+
+    color:#25D366;
+
+}
+
+.footer-grid a{
+
+    color:white;
+
+    text-decoration:none;
+
+}
+
+.footer-grid p{
+
+    margin:5px 0;
+
+}
 
 .copyright{
 
