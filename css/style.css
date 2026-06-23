@@ -729,3 +729,24 @@ body.dark .theme-footer{
     gap:8px;
 
 }
+.footer-links a{
+
+    display:block;
+
+    margin:8px 0;
+
+    color:white;
+
+    text-decoration:none;
+
+}
+
+.footer-links i{
+
+    width:22px;
+
+    text-align:center;
+
+    margin-right:8px;
+
+}
