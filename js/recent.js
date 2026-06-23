@@ -60,28 +60,29 @@ recent.forEach(id => {
     'recent-card';
 
     card.innerHTML = `
-        <img
-        src="Images/${product.folder}/${product.thumbnail}"
-        loading="lazy">
+    <img
+    src="Images/${product.folder}/${product.thumbnail}"
+    loading="lazy">
 
-        <p>${product.nama}</p>
+    <p>${product.nama}</p>
 
-        <label class="select-product">
+    <label class="select-product">
 
-            <input
-            type="checkbox"
-            class="product-checkbox"
-            data-id="${product.id}"
-            ${selectedProducts.includes(product.id)
-            ? 'checked'
-            : ''}>
+        <input
+        type="checkbox"
+        class="product-checkbox"
+        data-id="${product.id}"
 
-            <span>
-                Pilih Produk
-            </span>
+        ${selectedProducts.includes(product.id)
+        ? 'checked'
+        : ''}>
 
-        </label>
-    `;
+        <span>
+            Pilih Produk
+        </span>
+
+    </label>
+`;
 
     card.addEventListener(
         'click',
