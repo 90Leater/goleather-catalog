@@ -99,6 +99,15 @@ fetch('product.json')
             loading="lazy">
 
             <p>${product.nama}</p>
+            <button
+            class="select-product"
+            data-id="${product.id}">
+
+            ${selectedProducts.includes(product.id)
+            ? '✓ Dipilih'
+            : '+ Pilih'}
+
+            </button>
         `;
 
         card.addEventListener('click', () => {
@@ -113,6 +122,43 @@ fetch('product.json')
         });
 
         container.appendChild(card);
+        const selectBtn =
+        card.querySelector(
+        '.select-product'
+        );
+
+selectBtn.addEventListener(
+'click',
+(e) => {
+
+    e.stopPropagation();
+
+    if(
+    selectedProducts.includes(
+    product.id
+    )
+    ){
+
+        selectedProducts =
+        selectedProducts.filter(
+        id => id !== product.id
+        );
+
+    }else{
+
+        selectedProducts.push(
+        product.id
+        );
+
+    }
+
+    updateCart();
+
+    renderProducts(
+    filteredProducts
+    );
+
+});
 
     });
 
@@ -700,6 +746,7 @@ document
     renderProducts(products);
 
     renderPagination(products);
+    updateCart();
 
 });
 window.addEventListener('scroll', () => {
@@ -808,5 +855,49 @@ themeToggle.addEventListener(
     });
 
 }
+
+});
+document
+.getElementById('cartWhatsapp')
+.addEventListener(
+'click',
+() => {
+
+    if(
+    selectedProducts.length === 0
+    ){
+
+        alert(
+        'Pilih produk terlebih dahulu'
+        );
+
+        return;
+
+    }
+
+    let pesan =
+    'Halo GO.Leather%0A%0ASaya ingin tanya harga:%0A%0A';
+
+    selectedProducts.forEach(
+    (id,index) => {
+
+        const product =
+        products.find(
+        p => p.id === id
+        );
+
+        if(product){
+
+            pesan +=
+            `${index+1}. ${product.nama}%0A`;
+
+        }
+
+    });
+
+    window.open(
+    `https://wa.me/6288973623416?text=${pesan}`,
+    '_blank'
+    );
 
 });
