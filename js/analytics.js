@@ -1,94 +1,78 @@
-function trackProductView(productId){
+async function renderTopProducts(){
 
-    let views =
-    JSON.parse(
-        localStorage.getItem(
-            'productViews'
-        )
-    ) || {};
+const container =
+document.getElementById(
+    'topProductsList'
+);
 
-    views[productId] =
-    (views[productId] || 0) + 1;
+if(!container) return;
 
-    localStorage.setItem(
-        'productViews',
-        JSON.stringify(
-            views
-        )
-    );
-
+if(
+typeof getTopProducts !==
+'function'
+){
+    return;
 }
 
-function getTopViewedProducts(){
+container.innerHTML = '';
 
-    const views =
-    JSON.parse(
-        localStorage.getItem(
-            'productViews'
-        )
-    ) || {};
+const topProducts =
+await getTopProducts();
 
-    return Object.entries(
-        views
-    )
-    .sort(
-        (a,b) =>
-        b[1] - a[1]
-    )
-    .slice(0,5);
+topProducts.forEach(item => {
 
-}
-
-function renderTopProducts(){
-
-    const container =
-    document.getElementById(
-        'topProducts'
+    const product =
+    products.find(
+        p =>
+        String(p.id) ===
+        String(item.id)
     );
 
-    if(!container) return;
+    if(!product) return;
 
-    container.innerHTML = '';
+    const card =
+    document.createElement(
+        'div'
+    );
 
-    const topProducts =
-    getTopViewedProducts();
+    card.className =
+    'top-product-card';
 
-    topProducts.forEach(
-    ([id,count]) => {
+    card.innerHTML = `
+        <img
+        src="Images/${product.folder}/${product.thumbnail}"
+        loading="lazy">
 
-        const product =
-        products.find(
-            p =>
-            String(p.id) ===
-            String(id)
-        );
+        <p>${product.nama}</p>
 
-        if(!product) return;
+        <span>
+        👀 ${item.views}x
+        </span>
+    `;
 
-        const item =
-        document.createElement(
-            'div'
-        );
+    card.addEventListener(
+        'click',
+        () => {
 
-        item.className =
-        'selected-card';
+            const index =
+            products.findIndex(
+                p =>
+                p.id === product.id
+            );
 
-        item.innerHTML = `
-            <img
-            src="Images/${product.folder}/${product.thumbnail}">
+            openProduct(
+                product,
+                index
+            );
 
-            <p>${product.nama}</p>
+        }
+    );
 
-            <small>
-                ${count}x dilihat
-            </small>
-        `;
+    container.appendChild(
+        card
+    );
 
-        container.appendChild(
-            item
-        );
-
-    });
+});
 
 }
 
@@ -117,75 +101,5 @@ function getMostViewedProduct(){
     });
 
     return topProductId;
-
-}
-async function renderTopProducts(){
-
-    const container =
-    document.getElementById(
-        'topProductsList'
-    );
-
-    if(!container) return;
-
-    container.innerHTML = '';
-
-    const topProducts =
-    await getTopViewedProducts();
-
-    topProducts.forEach(item => {
-
-        const product =
-        products.find(
-            p =>
-            String(p.id) ===
-            String(item.id)
-        );
-
-        if(!product) return;
-
-        const card =
-        document.createElement(
-            'div'
-        );
-
-        card.className =
-        'top-product-card';
-
-        card.innerHTML = `
-            <img
-            src="Images/${product.folder}/${product.thumbnail}"
-            loading="lazy">
-
-            <p>${product.nama}</p>
-
-            <span>
-            👀 ${item.views}x
-            </span>
-        `;
-
-        card.addEventListener(
-            'click',
-            () => {
-
-                const index =
-                products.findIndex(
-                    p =>
-                    p.id === product.id
-                );
-
-                openProduct(
-                    product,
-                    index
-                );
-
-            }
-        );
-
-        container.appendChild(
-            card
-        );
-
-    });
 
 }
