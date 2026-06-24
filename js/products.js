@@ -16,7 +16,7 @@ async function renderProducts(filteredProducts){
     );
 
     const topProductId =
-        await getTopViewedProduct();
+        await getTopViewedProducts();
     
     pageProducts.forEach(product => {
 
