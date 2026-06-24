@@ -127,3 +127,30 @@ function updateStats(){
     selectedProducts.length;
 
 }
+function getMostViewedProduct(){
+
+    const views =
+    JSON.parse(
+        localStorage.getItem(
+            'productViews'
+        )
+    ) || {};
+
+    let maxViews = 0;
+    let topProductId = null;
+
+    Object.entries(views)
+    .forEach(([id,count]) => {
+
+        if(count > maxViews){
+
+            maxViews = count;
+            topProductId = id;
+
+        }
+
+    });
+
+    return topProductId;
+
+}
