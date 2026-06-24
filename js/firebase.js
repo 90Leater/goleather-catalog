@@ -98,7 +98,7 @@ async function(productId){
     return 0;
 
 };
-window.getTopViewedProduct =
+window.getTopViewedProducts =
 async function(){
 
     const snapshot =
