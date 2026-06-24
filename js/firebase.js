@@ -93,3 +93,39 @@ async function(productId){
     return 0;
 
 };
+window.getTopViewedProduct =
+async function(){
+
+    const snapshot =
+    await getDocs(
+        collection(
+            db,
+            'productViews'
+        )
+    );
+
+    let topId = null;
+    let maxViews = 0;
+
+    snapshot.forEach(doc => {
+
+        const data =
+        doc.data();
+
+        if(
+        data.views > maxViews
+        ){
+
+            maxViews =
+            data.views;
+
+            topId =
+            doc.id;
+
+        }
+
+    });
+
+    return topId;
+
+};
