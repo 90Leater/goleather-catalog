@@ -34,6 +34,8 @@ fetch('product.json')
     updateFavoriteCount();
 
     updateCart();
+
+    renderTopProducts();
     
     renderSelectedProducts();
 
