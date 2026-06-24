@@ -6,6 +6,8 @@ function openProduct(product,index){
     product.id
     );
 
+    renderTopProducts();
+
     renderRecentProducts();
 
     currentProductIndex = index;
