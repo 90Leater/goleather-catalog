@@ -61,3 +61,54 @@
 
     z-index:10;
 }
+.top-products{
+
+    display:flex;
+
+    gap:15px;
+
+    overflow-x:auto;
+
+    padding:10px 0 20px;
+
+}
+
+.top-product-card{
+
+    min-width:120px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+}
+
+.top-product-card img{
+
+    width:100px;
+
+    height:100px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+}
+
+.top-product-card p{
+
+    margin:5px 0;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.top-product-card span{
+
+    color:#666;
+
+    font-size:12px;
+
+}
