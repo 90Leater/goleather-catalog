@@ -2,10 +2,6 @@ async function renderProducts(filteredProducts){
 
     container.innerHTML = '';
 
-    updateProductCount(
-        filteredProducts
-    );
-
     const start =
     (currentPage - 1) *
     productsPerPage;
