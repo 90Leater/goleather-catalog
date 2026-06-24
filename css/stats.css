@@ -1,0 +1,47 @@
+.stats-grid{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin:20px 0;
+
+}
+
+.stat-card{
+
+    background:white;
+
+    padding:15px 20px;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    min-width:120px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+}
+
+.stat-card span{
+
+    display:block;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#25D366;
+
+}
+
+.stat-card small{
+
+    color:#666;
+
+}
