@@ -56,22 +56,48 @@ function openProduct(product,index){
     document.getElementById('modalCode').textContent =
     'Kode: ' + product.kode;
 
+    document.getElementById(
+    'copyCodeBtn'
+    ).onclick = () => {
+
+    navigator.clipboard.writeText(
+        product.kode
+    );
+
+    const btn =
+    document.getElementById(
+        'copyCodeBtn'
+    );
+
+    btn.textContent =
+    '✅ Tersalin';
+
+    setTimeout(() => {
+
+        btn.textContent =
+        '📋 Salin Kode';
+
+    },2000);
+
+};
+
     document.getElementById('modalCategory').textContent =
     product.kategori;
     const relatedContainer =
-document.getElementById('relatedProducts');
 
-relatedContainer.innerHTML = '';
+    document.getElementById('relatedProducts');
 
-const relatedProducts =
-products.filter(p =>
+    relatedContainer.innerHTML = '';
+
+    const relatedProducts =
+    products.filter(p =>
 
     p.kategori === product.kategori &&
     p.id !== product.id
 
-).slice(0,4);
+    ).slice(0,4);
 
-relatedProducts.forEach(item => {
+    relatedProducts.forEach(item => {
 
     const related =
     document.createElement('div');
