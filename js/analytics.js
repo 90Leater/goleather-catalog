@@ -91,42 +91,7 @@ function renderTopProducts(){
     });
 
 }
-function updateStats(){
 
-    const views =
-    JSON.parse(
-        localStorage.getItem(
-            'productViews'
-        )
-    ) || {};
-
-    const totalViews =
-    Object.values(
-        views
-    ).reduce(
-        (a,b) => a + b,
-        0
-    );
-
-    const favorites =
-    getFavorites();
-
-    document.getElementById(
-        'totalViews'
-    ).textContent =
-    totalViews;
-
-    document.getElementById(
-        'totalFavorites'
-    ).textContent =
-    favorites.length;
-
-    document.getElementById(
-        'totalSelected'
-    ).textContent =
-    selectedProducts.length;
-
-}
 function getMostViewedProduct(){
 
     const views =
