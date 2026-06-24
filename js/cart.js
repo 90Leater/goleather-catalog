@@ -7,19 +7,55 @@ function updateCart(){
     document.getElementById(
     'cartCount'
     ).textContent =
+
     '📋 Produk Dipilih • ' +
+
     selectedProducts.length;
 
-    localStorage.setItem(
-        'selectedProducts',
-        JSON.stringify(selectedProducts)
+    const whatsappBtn =
+    document.getElementById(
+    'cartWhatsapp'
     );
+
+    if(whatsappBtn){
+    
+    if(
+    selectedProducts.length === 0
+    ){
+
+        whatsappBtn.textContent =
+        '💬 Tanya Harga';
+
+    }else{
+
+        whatsappBtn.textContent =
+
+        '💬 Tanya Harga • ' +
+
+        selectedProducts.length +
+
+        ' Produk';
+
+    }
+
+}
+
+    localStorage.setItem(
+    'selectedProducts',
+    JSON.stringify(
+        selectedProducts
+    )
+);
+
     if(
     typeof updateStats ===
     'function'
     ){
+
         updateStats();
-    }
+
+}
+
     renderSelectedProducts();
 
 }
