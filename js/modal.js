@@ -11,8 +11,14 @@ function openProduct(product,index){
         product.id
     );
 
-    }
-    renderTopProducts();
+    setTimeout(() => {
+
+        renderTopProducts();
+
+    },1000);
+
+}
+
     renderRecentProducts();
 
     currentProductIndex = index;
