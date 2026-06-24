@@ -1,4 +1,4 @@
-function renderProducts(filteredProducts){
+async function renderProducts(filteredProducts){
 
     container.innerHTML = '';
 
@@ -19,6 +19,9 @@ function renderProducts(filteredProducts){
         end
     );
 
+    const topProductId =
+        await getTopViewedProduct();
+    
     pageProducts.forEach(product => {
 
         const imagePath =
@@ -28,9 +31,6 @@ function renderProducts(filteredProducts){
         document.createElement('div');
 
         card.className = 'card';
-
-        const topProductId =
-        getMostViewedProduct();
 
         card.innerHTML = `
             
