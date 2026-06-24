@@ -5,6 +5,8 @@ import {
     getFirestore,
     doc,
     getDoc,
+    getDocs,
+    collection,
     setDoc,
     updateDoc,
     increment
@@ -30,9 +32,12 @@ getFirestore(app);
 window.db = db;
 window.doc = doc;
 window.getDoc = getDoc;
+window.getDocs = getDocs;
+window.collection = collection;
 window.setDoc = setDoc;
 window.updateDoc = updateDoc;
 window.increment = increment;
+
 
 window.trackProductView =
 async function(productId){
