@@ -57,12 +57,18 @@ function renderSelectedProducts(){
         'selected-card';
 
         card.innerHTML = `
+            <button
+            class="remove-selected"
+            data-id="${product.id}">
+            ✕
+            </button>
+
             <img
             src="Images/${product.folder}/${product.thumbnail}"
             loading="lazy">
 
             <p>${product.nama}</p>
-        `;
+`;
 
         card.addEventListener(
             'click',
@@ -86,6 +92,42 @@ function renderSelectedProducts(){
         );
 
     });
+    const removeBtn =
+card.querySelector(
+'.remove-selected'
+);
+
+removeBtn.addEventListener(
+'click',
+(e) => {
+
+    e.stopPropagation();
+
+    selectedProducts =
+    selectedProducts.filter(
+        id => id !== product.id
+    );
+
+    localStorage.setItem(
+        'selectedProducts',
+        JSON.stringify(
+            selectedProducts
+        )
+    );
+
+    updateCart();
+
+    renderSelectedProducts();
+
+    document
+    .querySelector(
+    `.product-checkbox[data-id="${product.id}"]`
+    )
+    ?.removeAttribute(
+    'checked'
+    );
+
+});
 
 }
 
