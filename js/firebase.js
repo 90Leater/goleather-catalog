@@ -134,3 +134,35 @@ async function(){
     return topId;
 
 };
+window.getTopProducts =
+async function(){
+
+    const snapshot =
+    await getDocs(
+        collection(
+            db,
+            'productViews'
+        )
+    );
+
+    const items = [];
+
+    snapshot.forEach(doc => {
+
+        items.push({
+
+            id: doc.id,
+
+            views:
+            doc.data().views || 0
+
+        });
+
+    });
+
+    return items.sort(
+        (a,b) =>
+        b.views - a.views
+    ).slice(0,5);
+
+};
