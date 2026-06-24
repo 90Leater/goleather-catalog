@@ -1,7 +1,3 @@
-let currentProductIndex = 0;
-
-let selectedColor = '';
-
 let currentProduct = null;
 
 let currentColors = [];
