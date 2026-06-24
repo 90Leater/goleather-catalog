@@ -1,0 +1,58 @@
+.floating-wa{
+    position:fixed;
+    right:15px;
+    bottom:20px;
+
+    background:#25D366;
+    color:white;
+
+    text-decoration:none;
+
+    padding:10px 14px;
+
+    border-radius:50px;
+    font-size:14px;
+
+    font-weight:bold;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.2);
+
+    z-index:999;
+}
+
+.floating-wa:hover{
+    transform:translateY(-3px);
+    transition:.3s;
+}
+
+#backToTop{
+
+    position:fixed;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    bottom:30px;
+
+    background:none;
+
+    border:none;
+
+    color:#25D366;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    display:none;
+
+    z-index:998;
+
+}
+
+#backToTop:hover{
+    background:#25D366;
+}
