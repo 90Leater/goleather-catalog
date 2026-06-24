@@ -188,15 +188,38 @@ ${window.location.href}`;
         });
 
     }
-    document.getElementById(
+    const addBtn =
+document.getElementById(
 'addToSelection'
-).onclick = () => {
+);
 
 if(
-!selectedProducts.includes(
-    product.id
+selectedProducts.includes(
+product.id
 )
 ){
+
+    addBtn.textContent =
+    '✅ Sudah Dipilih';
+
+    addBtn.disabled = true;
+
+}else{
+
+    addBtn.textContent =
+    '📋 Tambah ke Pilihan';
+
+    addBtn.disabled = false;
+
+}
+
+addBtn.onclick = () => {
+
+    if(
+    selectedProducts.includes(
+    product.id
+    )
+    ) return;
 
     selectedProducts.push(
         product.id
@@ -211,19 +234,10 @@ if(
 
     updateCart();
 
-    alert(
-        product.nama +
-        ' ditambahkan ke Produk Dipilih'
-    );
+    addBtn.textContent =
+    '✅ Sudah Dipilih';
 
-}else{
-
-    alert(
-        product.nama +
-        ' sudah ada di Produk Dipilih'
-    );
-
-}
+    addBtn.disabled = true;
 
 };
 
