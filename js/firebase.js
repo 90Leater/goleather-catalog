@@ -33,3 +33,39 @@ window.getDoc = getDoc;
 window.setDoc = setDoc;
 window.updateDoc = updateDoc;
 window.increment = increment;
+
+window.trackProductView =
+async function(productId){
+
+    const ref =
+    doc(
+        db,
+        'productViews',
+        String(productId)
+    );
+
+    const snap =
+    await getDoc(ref);
+
+    if(snap.exists()){
+
+        await updateDoc(
+            ref,
+            {
+                views:
+                increment(1)
+            }
+        );
+
+    }else{
+
+        await setDoc(
+            ref,
+            {
+                views:1
+            }
+        );
+
+    }
+
+};
