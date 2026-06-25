@@ -1,40 +1,61 @@
 const modal =
-document.getElementById(
-'productModal'
-);
+document.getElementById("productModal");
 
 const closeButton =
-document.getElementById(
-'closeModal'
-);
+document.getElementById("closeModal");
 
 const addButton =
-document.getElementById(
-'addProduct'
-);
+document.getElementById("addProduct");
 
 addButton.addEventListener(
-'click',
-openModal
+    "click",
+    openModal
 );
 
 closeButton.addEventListener(
-'click',
-closeModal
+    "click",
+    closeModal
 );
 
 export function openModal(){
 
-modal.classList.remove(
-'hidden'
-);
+    clearForm();
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
+    "Tambah Produk";
+
+    modal.classList.remove(
+        "hidden"
+    );
 
 }
 
 export function closeModal(){
 
-modal.classList.add(
-'hidden'
-);
+    modal.classList.add(
+        "hidden"
+    );
+
+}
+
+export function clearForm(){
+
+    document.getElementById(
+        "productName"
+    ).value = "";
+
+    document.getElementById(
+        "productCode"
+    ).value = "";
+
+    document.getElementById(
+        "productCategory"
+    ).value = "";
+
+    document.getElementById(
+        "productFolder"
+    ).value = "";
 
 }
