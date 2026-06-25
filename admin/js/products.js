@@ -1,7 +1,9 @@
 import {
     db,
     collection,
-    getDocs
+    getDocs,
+    doc,
+    deleteDoc
 } from "../../firebase-admin.js";
 
 const productTable =
@@ -110,3 +112,49 @@ function createProductRow(product){
     productTable.appendChild(row);
 
 }
+document.addEventListener(
+    "click",
+    async (event)=>{
+
+        if(
+            !event.target.classList.contains(
+                "deleteBtn"
+            )
+        ) return;
+
+        const id =
+        event.target.dataset.id;
+
+        const confirmDelete =
+        confirm(
+            "Hapus produk ini?"
+        );
+
+        if(!confirmDelete) return;
+
+        try{
+
+            await deleteDoc(
+
+                doc(
+                    db,
+                    "products",
+                    id
+                )
+
+            );
+
+            loadProducts();
+
+        }catch(error){
+
+            console.error(error);
+
+            alert(
+                "Gagal menghapus produk."
+            );
+
+        }
+
+    }
+);
