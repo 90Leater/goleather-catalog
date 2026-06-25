@@ -18,7 +18,8 @@ import {
     deleteDoc,
     increment,
     serverTimestamp,
-    writeBatch
+    writeBatch,
+    runTransaction
 }
     from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 
@@ -68,5 +69,6 @@ export {
     ref,
     uploadBytes,
     getDownloadURL,
-    deleteObject
+    deleteObject,
+    runTransaction
 };
