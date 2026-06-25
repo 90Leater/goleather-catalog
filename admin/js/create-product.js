@@ -4,7 +4,8 @@ import {
     getDocs,
     doc,
     setDoc,
-    serverTimestamp
+    serverTimestamp,
+    runTransaction
 }
 from "../../firebase-admin.js";
 
@@ -67,35 +68,52 @@ async function saveProduct(){
 
         }
 
-        const snapshot =
-await getDocs(
-
-    collection(
-        db,
-        "products"
-    )
-
+        const counterRef =
+doc(
+    db,
+    "system",
+    "counter"
 );
 
-let nextId = 1;
+const nextId =
+await runTransaction(
+    db,
+    async(transaction)=>{
 
-snapshot.forEach(doc=>{
+        const counterDoc =
+        await transaction.get(
+            counterRef
+        );
 
-    const data =
-    doc.data();
+        if(
+            !counterDoc.exists()
+        ){
 
-    if(data.id >= nextId){
+            throw new Error(
+                "Counter tidak ditemukan."
+            );
 
-        nextId =
-        data.id + 1;
+        }
+
+        const currentId =
+        counterDoc.data().nextProductId;
+
+        transaction.update(
+            counterRef,
+            {
+                nextProductId:
+                currentId + 1
+            }
+        );
+
+        return currentId;
 
     }
+);
+        
+        await setDoc(
 
-});
-
-await setDoc(
-
-    doc(
+        doc(
         db,
         "products",
         String(nextId)
