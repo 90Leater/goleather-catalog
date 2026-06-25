@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>GO.Leather Admin</title>
+
+<link
+rel="stylesheet"
+href="admin.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <h1>GO.Leather Admin</h1>
+
+    <button id="logoutBtn">
+        Logout
+    </button>
+
+</header>
+
+<main class="container">
+
+    <section class="cards">
+
+        <div class="card">
+
+            <h3>Total Produk</h3>
+
+            <span id="totalProducts">
+                0
+            </span>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Total View</h3>
+
+            <span id="totalViews">
+                0
+            </span>
+
+        </div>
+
+    </section>
+
+    <section class="toolbar">
+
+        <button id="addProduct">
+
+            + Tambah Produk
+
+        </button>
+
+        <button id="importProduct">
+
+            Import product.json
+
+        </button>
+
+        <input
+        id="searchProduct"
+        type="text"
+        placeholder="Cari produk...">
+
+    </section>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+
+                <th>Nama</th>
+
+                <th>Kategori</th>
+
+                <th>Aksi</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="productTable">
+
+        </tbody>
+
+    </table>
+
+</main>
+
+<script src="../firebase.js"></script>
+
+<script src="admin.js"></script>
+
+</body>
+
+</html>
