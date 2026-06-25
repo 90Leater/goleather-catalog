@@ -1,133 +1,109 @@
-window.addEventListener(
+const productTable =
+document.getElementById(
+    'productTable'
+);
 
-'load',
+const totalProducts =
+document.getElementById(
+    'totalProducts'
+);
 
-loadProducts
-
+document.addEventListener(
+    'DOMContentLoaded',
+    () => {
+        loadProducts();
+    }
 );
 
 async function loadProducts(){
 
-const table =
-document.getElementById(
-'productTable'
-);
+    try{
 
-table.innerHTML =
-`
-<tr>
+        productTable.replaceChildren();
 
-<td colspan="5">
+        const loadingRow =
+        document.createElement('tr');
 
-Memuat data...
+        loadingRow.innerHTML = `
+            <td colspan="5">
+                Memuat data...
+            </td>
+        `;
 
-</td>
+        productTable.appendChild(
+            loadingRow
+        );
 
-</tr>
-`;
+        const snapshot =
+        await getDocs(
+            collection(
+                db,
+                'products'
+            )
+        );
 
-try{
+        productTable.replaceChildren();
 
-const snapshot =
-await getDocs(
+        let total = 0;
 
-collection(
-db,
-'products'
-)
+        snapshot.forEach(doc=>{
 
-);
+            total++;
 
-table.innerHTML = '';
+            createProductRow(
+                doc.data()
+            );
 
-let total = 0;
+        });
 
-snapshot.forEach(doc=>{
+        totalProducts.textContent =
+        total;
 
-const product =
-doc.data();
+    }catch(error){
 
-total++;
+        console.error(error);
 
-table.innerHTML +=
+        productTable.innerHTML = `
+            <tr>
+                <td colspan="5">
+                    Gagal mengambil data.
+                </td>
+            </tr>
+        `;
 
-`
-
-<tr>
-
-<td>
-
-${product.id}
-
-</td>
-
-<td>
-
-${product.nama}
-
-</td>
-
-<td>
-
-${product.kategori}
-
-</td>
-
-<td>
-
-${product.active ? 'Aktif':'Nonaktif'}
-
-</td>
-
-<td>
-
-<button
-class="editBtn">
-
-Edit
-
-</button>
-
-<button
-class="deleteBtn">
-
-Hapus
-
-</button>
-
-</td>
-
-</tr>
-
-`;
-
-});
-
-document
-.getElementById(
-'totalProducts'
-)
-.textContent =
-total;
-
-}catch(error){
-
-console.error(error);
-
-table.innerHTML =
-
-`
-<tr>
-
-<td colspan="5">
-
-Gagal mengambil data.
-
-</td>
-
-</tr>
-`;
+    }
 
 }
+
+function createProductRow(product){
+
+    const row =
+    document.createElement('tr');
+
+    row.innerHTML = `
+        <td>${product.id}</td>
+
+        <td>${product.nama}</td>
+
+        <td>${product.kategori}</td>
+
+        <td>
+            ${product.active ? 'Aktif' : 'Nonaktif'}
+        </td>
+
+        <td>
+
+            <button class="editBtn">
+                Edit
+            </button>
+
+            <button class="deleteBtn">
+                Hapus
+            </button>
+
+        </td>
+    `;
+
+    productTable.appendChild(row);
 
 }
