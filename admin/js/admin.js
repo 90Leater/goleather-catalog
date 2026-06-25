@@ -8,6 +8,10 @@ import {
     loadProducts
 } from "./products.js";
 
+import {
+    setupImportButton
+} from "./import.js";
+
 document.addEventListener(
     "DOMContentLoaded",
     init
@@ -18,6 +22,8 @@ function init(){
     console.log(
         "GO.Leather Admin Ready"
     );
+
+    setupImportButton();
 
     loadProducts();
 
