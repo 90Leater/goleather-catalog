@@ -1,3 +1,12 @@
+import {
+    db,
+    collection,
+    getDocs
+}
+from "../../firebase-admin.js";
+
+console.log("GO.Leather Admin Ready");
+
 const productTable =
 document.getElementById(
     'productTable'
