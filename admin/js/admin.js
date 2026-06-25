@@ -2,10 +2,22 @@ import {
     db,
     collection,
     getDocs
-}
-from "../../firebase-admin.js";
+} from "../../firebase-admin.js";
 
-console.log("GO.Leather Admin Ready");
+document.addEventListener(
+    "DOMContentLoaded",
+    init
+);
+
+function init(){
+
+    console.log(
+        "GO.Leather Admin Ready"
+    );
+
+    // nanti:
+    // loadProducts();
+}
 
 const productTable =
 document.getElementById(
