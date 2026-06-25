@@ -12,11 +12,23 @@ import {
     limit,
     setDoc,
     updateDoc,
-    increment
+    increment,
+    addDoc,
+    deleteDoc,
+    serverTimestamp
 }
-from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+    from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 
-const firebaseConfig = {
+    import {
+        getStorage,
+        ref,
+        uploadBytes,
+        getDownloadURL,
+        deleteObject
+}
+    from "https://www.gstatic.com/firebasejs/12.5.0/firebase-storage.js";
+
+    const firebaseConfig = {
     apiKey: "AIzaSyDwpejFLs4uyMcd2-3_J4wq55NVfaas5ig",
     authDomain: "go-leather-ind.firebaseapp.com",
     projectId: "go-leather-ind",
@@ -31,6 +43,20 @@ initializeApp(firebaseConfig);
 
 const db =
 getFirestore(app);
+
+const storage =
+getStorage(app);
+
+window.storage = storage;
+
+window.addDoc = addDoc;
+window.deleteDoc = deleteDoc;
+window.serverTimestamp = serverTimestamp;
+
+window.ref = ref;
+window.uploadBytes = uploadBytes;
+window.getDownloadURL = getDownloadURL;
+window.deleteObject = deleteObject;
 
 window.db = db;
 window.doc = doc;
