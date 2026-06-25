@@ -4,6 +4,10 @@ import {
     getDocs
 } from "../../firebase-admin.js";
 
+import {
+    loadProducts
+} from "./products.js";
+
 document.addEventListener(
     "DOMContentLoaded",
     init
@@ -15,8 +19,8 @@ function init(){
         "GO.Leather Admin Ready"
     );
 
-    // nanti:
-    // loadProducts();
+    loadProducts();
+
 }
 
 const productTable =
