@@ -1,3 +1,5 @@
+console.log('Import Module Loaded');
+
 async function importProducts(){
 
     if(
