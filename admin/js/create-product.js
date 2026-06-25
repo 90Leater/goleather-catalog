@@ -1,16 +1,17 @@
 import {
     db,
-    collection,
-    getDocs,
     doc,
     setDoc,
+    updateDoc,
     serverTimestamp,
     runTransaction
 }
 from "../../firebase-admin.js";
 
 import {
-    closeModal
+    closeModal,
+    getEditingProduct,
+    setEditingProduct
 }
 from "./modal.js";
 
@@ -111,44 +112,77 @@ await runTransaction(
     }
 );
         
-        await setDoc(
+        const editingId =
+getEditingProduct();
+
+if(editingId){
+
+    await updateDoc(
 
         doc(
-        db,
-        "products",
-        String(nextId)
-    ),
+            db,
+            "products",
+            editingId
+        ),
 
-    {
+        {
 
-        id: nextId,
+            kode,
 
-        kode,
+            nama,
 
-        nama,
+            kategori,
 
-        kategori,
+            folder
 
-        folder,
+        }
 
-        thumbnail: "",
+    );
 
-        warna:{},
+}else{
 
-        active:true,
+    await setDoc(
 
-        views:0,
+        doc(
+            db,
+            "products",
+            String(nextId)
+        ),
 
-        order:nextId,
+        {
 
-        createdAt:
-        serverTimestamp()
+            id: nextId,
 
-    }
+            kode,
 
-);
+            nama,
+
+            kategori,
+
+            folder,
+
+            thumbnail:"",
+
+            warna:{},
+
+            active:true,
+
+            views:0,
+
+            order:nextId,
+
+            createdAt:
+            serverTimestamp()
+
+        }
+
+    );
+
+}
 
         closeModal();
+
+        setEditingProduct(null);
 
         alert(
             "Produk berhasil ditambahkan."
