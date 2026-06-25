@@ -43,42 +43,35 @@ import {
 const app =
 initializeApp(firebaseConfig);
 
-const db =
-getFirestore(app);
 
-const storage =
-getStorage(app);
+export const db = getFirestore(app);
 
-window.db = db;
-window.storage = storage;
+export const storage = getStorage(app);
 
-window.doc = doc;
-window.getDoc = getDoc;
-window.getDocs = getDocs;
-
-window.collection = collection;
-window.query = query;
-window.where = where;
-window.orderBy = orderBy;
-window.limit = limit;
-
-window.setDoc = setDoc;
-window.addDoc = addDoc;
-window.updateDoc = updateDoc;
-window.deleteDoc = deleteDoc;
-
-window.increment = increment;
-window.serverTimestamp = serverTimestamp;
-window.writeBatch = writeBatch;
-
-window.ref = ref;
-window.uploadBytes = uploadBytes;
-window.getDownloadURL = getDownloadURL;
-window.deleteObject = deleteObject;
+export {
+    doc,
+    getDoc,
+    getDocs,
+    collection,
+    query,
+    where,
+    orderBy,
+    limit,
+    setDoc,
+    addDoc,
+    updateDoc,
+    deleteDoc,
+    increment,
+    serverTimestamp,
+    writeBatch,
+    ref,
+    uploadBytes,
+    getDownloadURL,
+    deleteObject
+};
 
 
-window.trackProductView =
-async function(productId){
+    export async function trackProductView(productId){
 
     try{
 
@@ -122,8 +115,8 @@ async function(productId){
     }
 
 };
-window.getProductViews =
-async function(productId){
+
+    export async function getProductViews(productId){
 
     try{
 
@@ -159,8 +152,8 @@ async function(productId){
     }
 
 };
-window.getTopViewedProducts =
-async function(){
+
+    export async function getTopViewedProducts(){
 
     try{
 
@@ -208,8 +201,8 @@ async function(){
     }
 
 };
-window.getTopProducts =
-async function(total = 8){
+
+    export async function getTopProducts(total = 8){
 
 try{
 
@@ -257,10 +250,3 @@ return items;
 }
 
 };
-
-window.goLeatherFirebaseReady = true;
-window.dispatchEvent(
-    new Event(
-        'goLeatherFirebaseReady'
-    )
-);
