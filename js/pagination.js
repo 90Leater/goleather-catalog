@@ -21,19 +21,21 @@ function renderPagination(filteredProducts){
 
             btn.addEventListener('click', () => {
 
-                currentPage = i;
+            currentPage = i;
 
+            renderProducts(filteredProducts);
 
-                renderProducts(filteredProducts);
+            renderPagination(filteredProducts);
 
-                renderPagination(filteredProducts);
+            const productSection =
+            document.getElementById('products');
 
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-
+            window.scrollTo({
+                top: productSection.offsetTop - 100,
+                behavior: 'smooth'
             });
+
+        });
 
             pagination.appendChild(btn);
 
