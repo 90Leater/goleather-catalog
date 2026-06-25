@@ -75,7 +75,7 @@ document.addEventListener(
             ).value =
             product.folder;
 
-            openModal();
+            openModal(false);
 
         }
 
