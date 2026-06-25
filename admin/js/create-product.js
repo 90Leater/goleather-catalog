@@ -67,39 +67,68 @@ async function saveProduct(){
 
         }
 
-        await addDoc(
+        const snapshot =
+await getDocs(
 
-            collection(
-                db,
-                "products"
-            ),
+    collection(
+        db,
+        "products"
+    )
 
-            {
+);
 
-                nama,
+let nextId = 1;
 
-                kode,
+snapshot.forEach(doc=>{
 
-                kategori,
+    const data =
+    doc.data();
 
-                folder,
+    if(data.id >= nextId){
 
-                thumbnail: "",
+        nextId =
+        data.id + 1;
 
-                warna:{},
+    }
 
-                active:true,
+});
 
-                views:0,
+await setDoc(
 
-                order:0,
+    doc(
+        db,
+        "products",
+        String(nextId)
+    ),
 
-                createdAt:
-                serverTimestamp()
+    {
 
-            }
+        id: nextId,
 
-        );
+        kode,
+
+        nama,
+
+        kategori,
+
+        folder,
+
+        thumbnail: "",
+
+        warna:{},
+
+        active:true,
+
+        views:0,
+
+        order:nextId,
+
+        createdAt:
+        serverTimestamp()
+
+    }
+
+);
 
         closeModal();
 
