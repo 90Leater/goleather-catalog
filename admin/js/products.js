@@ -35,13 +35,14 @@ export async function loadProducts(){
             loadingRow
         );
 
-        const snapshot =
-        await getDocs(
-            collection(
-                db,
-                "products"
-            )
-        );
+        onSnapshot(
+
+        collection(
+        db,
+        "products"
+        ),
+
+        (snapshot)=>{
 
         productTable.replaceChildren();
 
@@ -49,16 +50,21 @@ export async function loadProducts(){
 
         snapshot.forEach(doc=>{
 
-            total++;
+        total++;
 
-            createProductRow(
-                doc.data()
-            );
+        createProductRow(
+        doc.data()
+        );
 
         });
 
         totalProducts.textContent =
         total;
+
+        }
+
+        );
+
 
     }catch(error){
 
